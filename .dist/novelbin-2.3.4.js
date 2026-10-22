@@ -63,7 +63,7 @@ var novelStatus_1 = require("@libs/novelStatus");
 var cheerio_1 = require("cheerio");
 var ReadNovelFullPlugin = /** @class */ (function () {
     function ReadNovelFullPlugin(metadata) {
-        var _a, _b;
+        var _a, _b, _c, _d, _e;
         this.lastPage = null;
         this.lastSearch = null;
         this.searchInterval = 3400;
@@ -75,11 +75,9 @@ var ReadNovelFullPlugin = /** @class */ (function () {
         this.version = "2.3.".concat(2 + versionIncrements);
         this.options = metadata.options;
         this.filters = metadata.filters;
-        if ((_b = this.options) === null || _b === void 0 ? void 0 : _b.imageReferer) {
+        if (((_b = this.options) === null || _b === void 0 ? void 0 : _b.fetchHeaders) || ((_c = this.options) === null || _c === void 0 ? void 0 : _c.imageReferer)) {
             this.imageRequestInit = {
-                headers: {
-                    'Referer': this.site,
-                },
+                headers: __assign(__assign({}, (((_d = this.options) === null || _d === void 0 ? void 0 : _d.imageReferer) ? { 'Referer': this.site } : {})), (_e = this.options) === null || _e === void 0 ? void 0 : _e.fetchHeaders),
             };
         }
     }
